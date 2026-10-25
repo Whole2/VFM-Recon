@@ -1,0 +1,46 @@
+run_name: "VGGT_Scaled_test"
+
+improved_tsdf_sampling: True
+point_backprojection: True
+vfm_ckpt: checkpoint/aggr.pth
+raw_vggt_feature: False
+
+is_VGGT_Scaled: True
+
+depth_guidance:
+  enabled: True
+  # pred_depth_dir: "/mnt/archive/datasets/ScanNet/TartanAir/pred_depths/depths"
+  depth_scale_augmentation: True
+  bp_weighting: "none"
+  tsdf_fusion_channel: True
+  density_fusion_channel: False
+  gt_depth: False #xmodified
+
+output_sample_rate: 1 #xmodified from 4 to 1
+reduce_lr_on_plateau: False
+no_image_features: False
+
+
+initial_lr: 0.001
+steps: 60_000
+finetune_steps: 10_000
+n_views_train: 20
+n_views_val: 20
+workers_train: 8
+workers_val: 8
+workers_predict: 8 #xmodified from 8 to 0
+batch_size_per_device: 2
+voxel_size: 0.04 #xmodified from 0.04 to 0.08
+crop_size_nvox_train: [96, 96, 56]
+crop_size_nvox_val: [96, 96, 96]
+
+dataset_dir: "/mnt/archive/users/mingyuhang/organized_datasets/preprocessed/scans/"
+
+scene_list_file: "scene_list/1.txt"
+
+#bound_dir: "/mnt/archive/datasets/ScanNet/TanksAndTemples/bound"
+
+# if no keyframes file is provided then inference will use every frame
+# test_keyframes_file: "/mnt/archive/datasets/ScanNet/TartanAir/office/P000/keyframes_list.txt"
+
+do_prediction_timing: False

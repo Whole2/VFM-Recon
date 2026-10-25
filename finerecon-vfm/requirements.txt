@@ -1,0 +1,14 @@
+matplotlib 
+pillow 
+numpy 
+scikit-image 
+scipy 
+timm 
+torchvision 
+tqdm>=4.65
+trimesh 
+pytorch_lightning
+pyyaml 
+opencv-python-headless 
+python-box
+tensorboard
